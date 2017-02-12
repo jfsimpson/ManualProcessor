@@ -1,0 +1,14 @@
+service: processor
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: ${opt:stage, self:custom.defaultStage}
+  profile: ${self:custom.profiles.${self:provider.stage}}
+
+custom:
+  defaultStage: audev
+  profiles:
+    audev: au-dev
+    austg: au-stg
+
